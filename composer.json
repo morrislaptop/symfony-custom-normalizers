@@ -19,10 +19,12 @@
         "symfony/serializer": "^5.2"
     },
     "require-dev": {
+        "brick/date-time": "^0.2.3",
         "friendsofphp/php-cs-fixer": "^2.17",
         "nesbot/carbon": "^2.46",
         "phpunit/phpunit": "^9.5",
         "spatie/ray": "^1.10",
+        "symfony/property-access": "^5.2",
         "vimeo/psalm": "^4.3"
     },
     "autoload": {
