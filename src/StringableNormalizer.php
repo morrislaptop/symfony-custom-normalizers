@@ -37,22 +37,6 @@ class StringableNormalizer implements NormalizerInterface, CacheableSupportsMeth
     /**
      * {@inheritdoc}
      */
-    public function supportsDenormalization($data, string $type, string $format = null)
-    {
-        return false;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function denormalize($data, string $type, string $format = null, array $context = [])
-    {
-        throw new LogicException(sprintf('Cannot denormalize with "%s".', \Stringable::class));
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function hasCacheableSupportsMethod(): bool
     {
         return __CLASS__ === static::class;
