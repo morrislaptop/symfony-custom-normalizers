@@ -2,28 +2,39 @@
 
 namespace Morrislaptop\SymfonyCustomNormalizers;
 
-use Carbon\Carbon;
-use Carbon\CarbonInterface;
-use Illuminate\Support\Facades\Date;
-use InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface;
 
-class ParsableDenormalizer implements DenormalizerInterface
+/**
+ * Denormalizes strings to objects through a parse method.
+ *
+ * @author Craig Morris <craig.michael.morris@gmail.com>
+ *
+ * @final
+ */
+class ParsableDenormalizer implements DenormalizerInterface, CacheableSupportsMethodInterface
 {
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
-    public function denormalize($data, $class, string $format = null, array $context = [])
+    public function denormalize($data, string $type, string $format = null, array $context = [])
     {
-        return $class::parse($data);
+        return $type::parse($data);
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
-    public function supportsDenormalization($data, $type, string $format = null)
+    public function supportsDenormalization($data, string $type, string $format = null, array $context = []): bool
     {
         return method_exists($type, 'parse');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasCacheableSupportsMethod(): bool
+    {
+        return __CLASS__ === static::class;
     }
 }

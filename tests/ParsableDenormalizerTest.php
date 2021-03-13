@@ -2,50 +2,47 @@
 
 namespace Morrislaptop\SymfonyCustomNormalizers\Tests;
 
-use Brick\DateTime\LocalDate;
-use Carbon\Carbon;
-use DateTimeImmutable;
-use Morrislaptop\SymfonyCustomNormalizers\CarbonNormalizer;
-use Morrislaptop\SymfonyCustomNormalizers\LocalDateNormalizer;
-use Morrislaptop\SymfonyCustomNormalizers\ParsableDenormalizer;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
-use Symfony\Component\Serializer\Normalizer\JsonSerializableNormalizer;
-use Symfony\Component\Serializer\Serializer;
+use Morrislaptop\SymfonyCustomNormalizers\ParsableDenormalizer;
 
 class ParsableDenormalizerTest extends TestCase
 {
-    /** @test */
-    public function it_can_normalize_a_local_date_instance()
+    /**
+     * @var ParsableDenormalizer
+     */
+    private $normalizer;
+
+    protected function setUp(): void
     {
-        // Arrange.
-        $denormalized = LocalDate::of(2021, 03, 11);
-        $serializer = new Serializer([
-            // new LocalDateNormalizer,
-            new JsonSerializableNormalizer
-        ]);
-
-        // Act.
-        $normalized = $serializer->normalize($denormalized);
-
-        // Assert.
-        $this->assertEquals('2021-03-11', $normalized);
+        $this->normalizer = new ParsableDenormalizer();
     }
 
-    /** @test */
-    public function it_can_denormalize_an_object_with_a_parse_method()
+    public function testSupportDenormalization()
     {
-        // Arrange.
-        $normalized = '2021-03-11';
-        $serializer = new Serializer([new ParsableDenormalizer]);
+        $this->assertTrue($this->normalizer->supportsDenormalization('', ParsableDummy::class));
+        $this->assertFalse($this->normalizer->supportsDenormalization('', \stdClass::class));
+    }
 
-        // Act.
-        $denormalized = $serializer->denormalize($normalized, LocalDate::class);
+    public function testDenormalize()
+    {
+        $actual = $this->normalizer->denormalize('hello worlds', ParsableDummy::class);
 
-        // Assert.
-        $this->assertInstanceOf(LocalDate::class, $denormalized);
-        $this->assertEquals(2021, $denormalized->getYear());
-        $this->assertEquals(03, $denormalized->getMonth());
-        $this->assertEquals(11, $denormalized->getDay());
+        $this->assertInstanceOf(ParsableDummy::class, $actual);
+        $this->assertSame('hello worlds', $actual->str);
+    }
+}
+
+class ParsableDummy
+{
+    public $str;
+
+    public function __construct($str)
+    {
+        $this->str = $str;
+    }
+
+    public static function parse($str)
+    {
+        return new static($str);
     }
 }
