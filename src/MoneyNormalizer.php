@@ -2,19 +2,10 @@
 
 namespace Morrislaptop\SymfonyCustomNormalizers;
 
-use DatePeriod;
-use DateInterval;
-use Carbon\Carbon;
 use Brick\Money\Money;
-use DateTimeInterface;
-use Carbon\CarbonInterface;
 use InvalidArgumentException;
-use Illuminate\Support\Facades\Date;
-use Symfony\Component\Serializer\SerializerAwareTrait;
-use Symfony\Component\Serializer\SerializerAwareInterface;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class MoneyNormalizer implements NormalizerInterface, DenormalizerInterface
 {

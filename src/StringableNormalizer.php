@@ -2,10 +2,10 @@
 
 namespace Morrislaptop\SymfonyCustomNormalizers;
 
-use Symfony\Component\Serializer\Exception\LogicException;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
+use Symfony\Component\Serializer\Exception\LogicException;
 use Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * A normalizer that uses an objects own Stringable implementation.
@@ -19,7 +19,7 @@ class StringableNormalizer implements NormalizerInterface, CacheableSupportsMeth
      */
     public function normalize($object, string $format = null, array $context = [])
     {
-        if (!$object instanceof \Stringable && !method_exists($object, '__toString')) {
+        if (! $object instanceof \Stringable && ! method_exists($object, '__toString')) {
             throw new InvalidArgumentException(sprintf('The object must implement "%s or __toString()".', \Stringable::class));
         }
 

@@ -2,8 +2,8 @@
 
 namespace Morrislaptop\SymfonyCustomNormalizers\Tests;
 
-use PHPUnit\Framework\TestCase;
 use Morrislaptop\SymfonyCustomNormalizers\ParsableDenormalizer;
+use PHPUnit\Framework\TestCase;
 
 class ParsableDenormalizerTest extends TestCase
 {

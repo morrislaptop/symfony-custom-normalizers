@@ -11,10 +11,8 @@
 
 namespace Symfony\Component\Serializer\Tests\Normalizer;
 
-use PHPUnit\Framework\TestCase;
-use Symfony\Component\Serializer\SerializerInterface;
 use Morrislaptop\SymfonyCustomNormalizers\StringableNormalizer;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @author Craig Morris <craig.michael.morris@gmail.com>

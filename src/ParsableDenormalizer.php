@@ -2,8 +2,8 @@
 
 namespace Morrislaptop\SymfonyCustomNormalizers;
 
-use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 /**
  * Denormalizes strings to objects through a parse method.

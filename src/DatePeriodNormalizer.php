@@ -2,18 +2,14 @@
 
 namespace Morrislaptop\SymfonyCustomNormalizers;
 
-use DatePeriod;
-use Carbon\Carbon;
-use Carbon\CarbonInterface;
 use DateInterval;
+use DatePeriod;
 use DateTimeInterface;
 use InvalidArgumentException;
-use Illuminate\Support\Facades\Date;
-use Symfony\Component\Serializer\SerializerAwareTrait;
-use Symfony\Component\Serializer\SerializerAwareInterface;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\SerializerAwareInterface;
+use Symfony\Component\Serializer\SerializerAwareTrait;
 
 class DatePeriodNormalizer implements NormalizerInterface, DenormalizerInterface, SerializerAwareInterface
 {
