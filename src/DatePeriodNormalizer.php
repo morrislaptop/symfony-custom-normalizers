@@ -6,14 +6,18 @@ use DateInterval;
 use DatePeriod;
 use DateTimeInterface;
 use InvalidArgumentException;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\SerializerAwareInterface;
 use Symfony\Component\Serializer\SerializerAwareTrait;
 
-class DatePeriodNormalizer implements NormalizerInterface, DenormalizerInterface, SerializerAwareInterface
+class DatePeriodNormalizer implements NormalizerInterface, DenormalizerInterface, NormalizerAwareInterface, DenormalizerAwareInterface
 {
-    use SerializerAwareTrait;
+    use NormalizerAwareTrait, DenormalizerAwareTrait;
 
     /**
      * @inheritdoc
@@ -25,9 +29,9 @@ class DatePeriodNormalizer implements NormalizerInterface, DenormalizerInterface
         }
 
         return [
-            'start' => $this->serializer->normalize($object->start, DateTimeInterface::class),
-            'interval' => $this->serializer->normalize($object->interval, DateInterval::class),
-            'end' => $this->serializer->normalize($object->end, DateTimeInterface::class),
+            'start' => $this->normalizer->normalize($object->getStartDate(), DateTimeInterface::class),
+            'interval' => $this->normalizer->normalize($object->getDateInterval(), DateInterval::class),
+            'end' => $this->normalizer->normalize($object->getEndDate(), DateTimeInterface::class),
         ];
     }
 
@@ -45,9 +49,9 @@ class DatePeriodNormalizer implements NormalizerInterface, DenormalizerInterface
     public function denormalize($data, string $type, string $format = null, array $context = [])
     {
         return new DatePeriod(
-            $this->serializer->denormalize($data['start'], DateTimeInterface::class),
-            $this->serializer->denormalize($data['interval'], DateInterval::class),
-            $this->serializer->denormalize($data['end'], DateTimeInterface::class),
+            $this->denormalizer->denormalize($data['start'], DateTimeInterface::class),
+            $this->denormalizer->denormalize($data['interval'], DateInterval::class),
+            $this->denormalizer->denormalize($data['end'], DateTimeInterface::class),
         );
     }
 

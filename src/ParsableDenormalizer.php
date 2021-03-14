@@ -19,7 +19,7 @@ class ParsableDenormalizer implements DenormalizerInterface, CacheableSupportsMe
      */
     public function denormalize($data, string $type, string $format = null, array $context = [])
     {
-        return $type::parse($data);
+        return class_exists($type) ? $type::parse($data) : null;
     }
 
     /**
@@ -27,7 +27,7 @@ class ParsableDenormalizer implements DenormalizerInterface, CacheableSupportsMe
      */
     public function supportsDenormalization($data, string $type, string $format = null, array $context = []): bool
     {
-        return method_exists($type, 'parse');
+        return class_exists($type) && method_exists($type, 'parse');
     }
 
     /**
