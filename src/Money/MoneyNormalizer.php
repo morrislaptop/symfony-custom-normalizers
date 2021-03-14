@@ -20,7 +20,7 @@ class MoneyNormalizer implements NormalizerInterface, DenormalizerInterface
         }
 
         return [
-            'minor' => $object->getAmount(),
+            'amount' => $object->getAmount(),
             'currency' => $object->getCurrency()->getCode(),
         ];
     }
@@ -38,7 +38,7 @@ class MoneyNormalizer implements NormalizerInterface, DenormalizerInterface
      */
     public function denormalize($data, string $type, string $format = null, array $context = [])
     {
-        return new Money($data['minor'], new Currency($data['currency']));
+        return new Money($data['amount'], new Currency($data['currency']));
     }
 
     /**
