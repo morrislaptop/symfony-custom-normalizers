@@ -22,6 +22,7 @@
         "brick/date-time": "^0.2.3",
         "brick/money": "^0.5.1",
         "friendsofphp/php-cs-fixer": "^2.17",
+        "moneyphp/money": "^3.3",
         "nesbot/carbon": "^2.46",
         "phpunit/phpunit": "^9.5",
         "spatie/ray": "^1.10",
