@@ -2,11 +2,11 @@
 
 namespace Morrislaptop\SymfonyCustomNormalizers\Money;
 
-use Money\Money;
-use Money\Currency;
 use InvalidArgumentException;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Money\Currency;
+use Money\Money;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class MoneyNormalizer implements NormalizerInterface, DenormalizerInterface
 {
