@@ -22,7 +22,7 @@ class MoneyNormalizerTest extends TestCase
         $normalized = $serializer->normalize($money);
 
         // Assert.
-        $this->assertEquals(['minor' => 5000, 'currency' => 'USD'], $normalized);
+        $this->assertEquals(['amount' => 5000, 'currency' => 'USD'], $normalized);
     }
 
     /** @test */
@@ -30,7 +30,7 @@ class MoneyNormalizerTest extends TestCase
     {
         // Arrange.
         $normalized = [
-            'minor' => 5000,
+            'amount' => 5000,
             'currency' => 'USD',
         ];
         $serializer = new Serializer([
