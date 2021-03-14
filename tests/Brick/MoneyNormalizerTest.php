@@ -1,9 +1,9 @@
 <?php
 
-namespace Morrislaptop\SymfonyCustomNormalizers\Tests;
+namespace Morrislaptop\SymfonyCustomNormalizers\Tests\Brick;
 
 use Brick\Money\Money;
-use Morrislaptop\SymfonyCustomNormalizers\MoneyNormalizer;
+use Morrislaptop\SymfonyCustomNormalizers\Brick\MoneyNormalizer;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Serializer\Serializer;
 

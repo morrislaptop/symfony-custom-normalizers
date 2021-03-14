@@ -1,6 +1,6 @@
 <?php
 
-namespace Morrislaptop\SymfonyCustomNormalizers;
+namespace Morrislaptop\SymfonyCustomNormalizers\Brick;
 
 use Brick\Money\Money;
 use InvalidArgumentException;
