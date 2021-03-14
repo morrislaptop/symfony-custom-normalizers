@@ -2,11 +2,8 @@
 
 namespace Morrislaptop\SymfonyCustomNormalizers\Tests;
 
-use PHPUnit\Framework\TestCase;
-use Morrislaptop\SymfonyCustomNormalizers\ParsableDenormalizer;
-use Morrislaptop\SymfonyCustomNormalizers\StringableNormalizer;
 use Morrislaptop\SymfonyCustomNormalizers\StringableAndParsableNormalizer;
-use Morrislaptop\SymfonyCustomNormalizers\NormalizeIfDenormalizableNormalizer;
+use PHPUnit\Framework\TestCase;
 
 class StringableAndParsableNormalizerTest extends TestCase
 {
