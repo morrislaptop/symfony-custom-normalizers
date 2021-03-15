@@ -15,6 +15,21 @@ You can install the package via composer:
 composer require morrislaptop/symfony-custom-normalizers
 ```
 
+## Supported Classes
+
+* [Brick Money](https://github.com/brick/money)
+* [MoneyPHP Money](https://github.com/moneyphp/money)
+* [Carbon](https://carbon.nesbot.com/)
+* [DatePeriod](https://www.php.net/manual/en/class.dateperiod.php)
+* [Laravel ModelIdentifier](https://laravel.com/api/8.x/Illuminate/Contracts/Database/ModelIdentifier.html)
+
+## Meta Classes
+
+* Any class with a `__toString()` method
+* Any class with a `parse($str)` method
+* Any class with a `__toString()` if it has a `parse($str)` method as well
+* ObjectDocblocksNormalizer which simply extends Symfony's ObjectNormalizer but it supports docblocks as well
+
 ## Usage
 
 ```php
