@@ -16,7 +16,7 @@
     ],
     "require": {
         "php": "^7.4|^8.0",
-        "symfony/serializer": "^5.2"
+        "symfony/serializer": "^5.2|^6.0"
     },
     "require-dev": {
         "brick/date-time": "^0.2.3",
@@ -27,7 +27,7 @@
         "nesbot/carbon": "^2.46",
         "phpunit/phpunit": "^9.5",
         "spatie/ray": "^1.10",
-        "symfony/property-access": "^5.2",
+        "symfony/property-access": "^5.2|^6.0",
         "vimeo/psalm": "^4.3"
     },
     "autoload": {
